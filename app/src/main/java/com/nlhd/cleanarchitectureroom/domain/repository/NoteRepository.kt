@@ -15,4 +15,7 @@ interface NoteRepository {
 
     //Delete notes
     suspend fun deleteNote(note: Note)
+
+    //Get note by id
+    suspend fun getNote(id: Int): Note?
 }
