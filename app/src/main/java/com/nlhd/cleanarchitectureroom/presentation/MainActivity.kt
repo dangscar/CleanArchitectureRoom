@@ -11,19 +11,21 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.compose.rememberNavController
+import com.nlhd.cleanarchitectureroom.presentation.notes.NoteViewModel
+import com.nlhd.cleanarchitectureroom.presentation.notes.NotesScreen
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                Column(
-                    modifier = Modifier.padding(innerPadding)
-                ) {
-
-                }
-            }
+            val navController = rememberNavController()
+            val noteViewModel: NoteViewModel = hiltViewModel()
+            NotesScreen(navController = navController, noteViewModel = noteViewModel)
         }
     }
 }
