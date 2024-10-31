@@ -15,19 +15,6 @@ abstract class NoteDatabase : RoomDatabase() {
     abstract val noteDao: NoteDao
 
     companion object {
-        @Volatile
-        private var INSTANCE : NoteDatabase? = null
-
-        fun getAudioMusicDatabase(context: Context): NoteDatabase {
-            return INSTANCE ?: synchronized(this) {
-                val instance = Room.databaseBuilder(
-                    context.applicationContext,
-                    NoteDatabase::class.java,
-                    "note_db"
-                ).build()
-                INSTANCE = instance
-                instance
-            }
-        }
+        const val DB_NAME = "note_db"
     }
 }

@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.rememberNavController
+import com.nlhd.cleanarchitectureroom.presentation.add_note.AddNoteScreen
 import com.nlhd.cleanarchitectureroom.presentation.notes.NoteViewModel
 import com.nlhd.cleanarchitectureroom.presentation.notes.NotesScreen
 import dagger.hilt.android.AndroidEntryPoint
@@ -24,8 +25,8 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             val navController = rememberNavController()
-            val noteViewModel: NoteViewModel = hiltViewModel()
-            NotesScreen(navController = navController, noteViewModel = noteViewModel)
+            //NotesScreen(navController = navController)
+            AddNoteScreen(navController = navController)
         }
     }
 }

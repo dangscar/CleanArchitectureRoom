@@ -26,7 +26,11 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideDatabase(@ApplicationContext context: Context): NoteDatabase = NoteDatabase.getAudioMusicDatabase(context)
+    fun provideDatabase(@ApplicationContext context: Context): NoteDatabase = Room.databaseBuilder(
+        context,
+        NoteDatabase::class.java,
+        NoteDatabase.DB_NAME
+    ).build()
 
     @Provides
     @Singleton

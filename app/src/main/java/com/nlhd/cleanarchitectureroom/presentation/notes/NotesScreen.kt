@@ -1,5 +1,6 @@
 package com.nlhd.cleanarchitectureroom.presentation.notes
 
+import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -20,11 +21,11 @@ import kotlinx.coroutines.launch
 @Composable
 fun NotesScreen(
     navController: NavController,
-    noteViewModel: NoteViewModel
+    noteViewModel: NoteViewModel = hiltViewModel()
 ) {
+    noteViewModel.getNotes()
     val notes = noteViewModel.noteState.collectAsState()
 
-    val scope = rememberCoroutineScope()
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         floatingActionButton = {
