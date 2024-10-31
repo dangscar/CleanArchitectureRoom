@@ -1,6 +1,7 @@
 package com.nlhd.cleanarchitectureroom.presentation
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -14,6 +15,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.rememberNavController
 import com.nlhd.cleanarchitectureroom.presentation.add_note.AddNoteScreen
+import com.nlhd.cleanarchitectureroom.presentation.navigation.Navigation
+import com.nlhd.cleanarchitectureroom.presentation.navigation.Screen
 import com.nlhd.cleanarchitectureroom.presentation.notes.NoteViewModel
 import com.nlhd.cleanarchitectureroom.presentation.notes.NotesScreen
 import dagger.hilt.android.AndroidEntryPoint
@@ -24,9 +27,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            val navController = rememberNavController()
-            //NotesScreen(navController = navController)
-            AddNoteScreen(navController = navController)
+            Navigation()
         }
     }
 }

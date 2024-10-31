@@ -16,6 +16,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.nlhd.cleanarchitectureroom.presentation.navigation.Screen
 import kotlinx.coroutines.launch
 
 @Composable
@@ -23,18 +24,14 @@ fun NotesScreen(
     navController: NavController,
     noteViewModel: NoteViewModel = hiltViewModel()
 ) {
-    noteViewModel.getNotes()
     val notes = noteViewModel.noteState.collectAsState()
 
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         floatingActionButton = {
-            FloatingActionButton(onClick = { /*TODO*/ }) {
+            FloatingActionButton(onClick = { navController.navigate(Screen.AddNoteScreen.route) }) {
                 Icon(imageVector = Icons.Default.Add, contentDescription = null)
             }
-        },
-        snackbarHost = {
-
         }
     ) { innerPadding ->
         Column(
