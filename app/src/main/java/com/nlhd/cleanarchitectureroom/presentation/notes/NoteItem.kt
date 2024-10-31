@@ -1,5 +1,6 @@
 package com.nlhd.cleanarchitectureroom.presentation.notes
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -23,10 +24,11 @@ import com.nlhd.cleanarchitectureroom.domain.model.Note
 @Composable
 fun NoteItem(
     note: Note,
-    onDelete: () -> Unit
+    onDelete: () -> Unit,
+    onUpdate: (Int) -> Unit
 ) {
     Row(
-        modifier = Modifier.fillMaxWidth().padding(5.dp),
+        modifier = Modifier.fillMaxWidth().padding(5.dp).clickable { onUpdate(note.id) },
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween
     ) {

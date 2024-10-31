@@ -41,9 +41,15 @@ fun NotesScreen(
 
             ) {
                 items(notes.value.size) {
-                    NoteItem(note = notes.value[it], onDelete = {
-                        noteViewModel.onEvent(NoteEvent.DeleteNote(notes.value[it]))
-                    })
+                    NoteItem(
+                        note = notes.value[it],
+                        onDelete = {
+                            noteViewModel.onEvent(NoteEvent.DeleteNote(notes.value[it]))
+                        },
+                        onUpdate = {
+                            navController.navigate(route = Screen.UpdateNoteScreen.route+"/$it")
+                        }
+                    )
                 }
 
 
